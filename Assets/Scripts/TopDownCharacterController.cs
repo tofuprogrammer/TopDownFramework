@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// A class to control the top down character.
+/// A class to control the top-down character.
 /// Implements the player controls for moving and shooting.
 /// Updates the player animator so the character animates based on input.
 /// </summary>
@@ -20,6 +20,8 @@ public class TopDownCharacterController : MonoBehaviour
     
     //The direction that the player is moving in.
     private Vector2 m_playerDirection;
+
+    private float m_fireTimeout = 0.3f;
    
 
     [Header("Movement parameters")]
@@ -27,12 +29,20 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private float m_playerSpeed = 200f;
     //The maximum speed the player can move
     [SerializeField] private float m_playerMaxSpeed = 1000f;
-
+    
+    [Header("Projectile parameters")]
+    // References the projectile object
+    [SerializeField] GameObject m_projectilePrefab;
+    // Projectile spawn point
+    [SerializeField] Transform m_firePoint;
+    // Projectile velocity
+    [SerializeField] float m_projectileSpeed;
+    [SerializeField] private float m_fireRate;
     #endregion
-
+    
     /// <summary>
-    /// When the script first initialises this gets called.
-    /// Use this for grabbing components and setting up input bindings.
+    /// Awake is called when the script is initialised.
+    /// It is used to get components from GameObjects that will be needed later.
     /// </summary>
     private void Awake()
     {
@@ -46,7 +56,8 @@ public class TopDownCharacterController : MonoBehaviour
     }
 
     /// <summary>
-    /// Called after Awake(), and is used to initialize variables e.g. set values on the player
+    /// Start is called immediately after Awake().
+    /// It is used to initialize variables e.g. set values on the player.
     /// </summary>
     void Start()
     {
@@ -54,7 +65,7 @@ public class TopDownCharacterController : MonoBehaviour
     }
 
     /// <summary>
-    /// When a fixed update loop is called, it runs at a constant rate, regardless of pc performance.
+    /// A fixed update loop runs at a constant rate, regardless of performance.
     /// This ensures that physics are calculated properly.
     /// </summary>
     private void FixedUpdate()
@@ -64,6 +75,18 @@ public class TopDownCharacterController : MonoBehaviour
         
         //apply the movement to the character using the clamped speed value.
         m_rigidbody.linearVelocity = m_playerDirection * (speed * Time.fixedDeltaTime);
+    }
+
+    /// <summary>
+    /// This is a basic function to spawn a projectle
+    /// </summary>
+    void Fire()
+    {
+        GameObject projectileToSpawn = Instantiate(m_projectilePrefab, m_firePoint.position, Quaternion.identity);
+        if (projectileToSpawn.GetComponent<Rigidbody2D>() != null)
+        {
+            projectileToSpawn.GetComponent<Rigidbody2D>().AddForce(m_playerDirection.normalized * m_projectileSpeed, ForceMode2D.Impulse);
+        }
     }
     
     /// <summary>
@@ -88,11 +111,10 @@ public class TopDownCharacterController : MonoBehaviour
         }
 
         // check if an attack has been triggered.
-        if (m_attackAction.IsPressed())
+        if (m_attackAction.IsPressed() && Time.time > m_fireTimeout)
         {
-            // just log that an attack has been registered for now
-            // we will look at how to do this in future sessions.
-            Debug.Log("Attack!");
+            m_fireTimeout = Time.time + m_fireRate;
+            Fire();
         }
     }
 }
