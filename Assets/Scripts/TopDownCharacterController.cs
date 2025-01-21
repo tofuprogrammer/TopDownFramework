@@ -101,6 +101,11 @@ public class TopDownCharacterController : MonoBehaviour
     
     void Update()
     {
+        /*
+        Gets the mouse's position on the screen.
+        Converts the position of the mouse on the screen to its position in the game world.
+        Subtracts the position of the player from the position of the mouse to get a vector pointing to the mouse cursor from the player's position.
+        */
         mousePosition = Input.mousePosition;
         mousePointOnScreen = Camera.main.ScreenToWorldPoint(mousePosition);
         mouseDirection = mousePointOnScreen - transform.position;
