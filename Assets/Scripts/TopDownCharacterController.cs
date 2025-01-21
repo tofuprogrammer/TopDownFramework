@@ -20,10 +20,14 @@ public class TopDownCharacterController : MonoBehaviour
     
     //The direction that the player is moving in.
     private Vector2 m_playerDirection;
-
+    
+    //The minimum time between shots.
     private float m_fireTimeout = 0.3f;
-   
 
+    //Vectors to calculate the position of the mouse and the direction from the player.
+    private Vector2 mousePosition;
+    private Vector3 mousePointOnScreen;
+    private Vector3 mouseDirection;
     [Header("Movement parameters")]
     //The speed at which the player moves
     [SerializeField] private float m_playerSpeed = 200f;
@@ -85,17 +89,22 @@ public class TopDownCharacterController : MonoBehaviour
         GameObject projectileToSpawn = Instantiate(m_projectilePrefab, m_firePoint.position, Quaternion.identity);
         if (projectileToSpawn.GetComponent<Rigidbody2D>() != null)
         {
-            projectileToSpawn.GetComponent<Rigidbody2D>().AddForce(m_playerDirection.normalized * m_projectileSpeed, ForceMode2D.Impulse);
+            projectileToSpawn.GetComponent<Rigidbody2D>().AddForce(mouseDirection.normalized * m_projectileSpeed, ForceMode2D.Impulse);
         }
     }
-    
+
     /// <summary>
     /// When the update loop is called, it runs every frame.
     /// Therefore, this will run more or less frequently depending on performance.
     /// Used to catch changes in variables or input.
     /// </summary>
+    
     void Update()
     {
+        mousePosition = Input.mousePosition;
+        mousePointOnScreen = Camera.main.ScreenToWorldPoint(mousePosition);
+        mouseDirection = mousePointOnScreen - transform.position;
+        
         // store any movement inputs into m_playerDirection - this will be used in FixedUpdate to move the player.
         m_playerDirection = m_moveAction.ReadValue<Vector2>();
         
