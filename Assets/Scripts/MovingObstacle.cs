@@ -15,12 +15,14 @@ public class MovingObstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Turns around if the obstacle is colliding with one of its waypoints.
         if (collision.CompareTag("MovingObstacleWaypoint"))
         {
             ChangeTarget();
         }
     }
     
+    // Turns the obstacle around.
     void ChangeTarget()
     {
         transform.Rotate(0f, 0f, 180f);
@@ -38,9 +40,10 @@ public class MovingObstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Snaps the obstacle to the target to prevent potential issues with floating point errors.
         if (Vector2.Distance(transform.position, m_target.position) < 0.01f)
         {
-            transform.position = m_target.position; // Eliminates potential issues with floating point errors
+            transform.position = m_target.position;
         }
         else
         {
