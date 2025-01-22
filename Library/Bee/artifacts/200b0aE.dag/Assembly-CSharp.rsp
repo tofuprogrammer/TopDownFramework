@@ -439,6 +439,7 @@
 "Assets/Scripts/MovingObstacle.cs"
 "Assets/Scripts/ProjectileSystem.cs"
 "Assets/Scripts/TopDownCharacterController.cs"
+"Assets/Scripts/VFXManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+
