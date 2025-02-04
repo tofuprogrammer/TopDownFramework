@@ -32,7 +32,9 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private float m_playerSpeed = 200f;
     //The maximum speed the player can move
     [SerializeField] private float m_playerMaxSpeed = 1000f;
-
+    
+    // The speed at which the player rotates
+    [SerializeField] private float m_playerRotationSpeed = 40f;
     #endregion
 
     /// <summary>
@@ -52,14 +54,6 @@ public class TopDownCharacterController : MonoBehaviour
     }
 
     /// <summary>
-    /// Called after Awake(), and is used to initialize variables e.g. set values on the player
-    /// </summary>
-    void Start()
-    {
-        
-    }
-
-    /// <summary>
     /// When a fixed update loop is called, it runs at a constant rate, regardless of pc performance.
     /// This ensures that physics are calculated properly.
     /// </summary>
@@ -68,8 +62,11 @@ public class TopDownCharacterController : MonoBehaviour
         //clamp the speed to the maximum speed for if the speed has been changed in code.
         float speed = m_playerSpeed > m_playerMaxSpeed ? m_playerMaxSpeed : m_playerSpeed;
         
-        //apply the movement to the character using the clamped speed value.
-        m_rigidbody.linearVelocity = m_playerDirection * (speed * Time.fixedDeltaTime);
+        // Applies a force to make the player move in the direction they are facing if W or the up arrow is pressed.
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            GetComponent<Rigidbody2D>().AddForce(transform.up * (Time.deltaTime * speed * Input.GetAxis("Vertical")));
+        }
     }
     
     /// <summary>
@@ -81,18 +78,6 @@ public class TopDownCharacterController : MonoBehaviour
     {
         // store any movement inputs into m_playerDirection - this will be used in FixedUpdate to move the player.
         m_playerDirection = m_moveAction.ReadValue<Vector2>();
-        
-        // ~~ handle animator ~~
-        // Update the animator speed to ensure that we revert to idle if the player doesn't move.
-        m_animator.SetFloat("Speed", m_playerDirection.magnitude);
-        
-        // If there is movement, set the directional values to ensure the character is facing the way they are moving.
-        if (m_playerDirection.magnitude > 0)
-        {
-            
-            m_animator.SetFloat("Horizontal", m_playerDirection.x);
-            m_animator.SetFloat("Vertical", m_playerDirection.y);
-        }
 
         // check if an attack has been triggered.
         if (m_attackAction.IsPressed())
@@ -101,10 +86,25 @@ public class TopDownCharacterController : MonoBehaviour
             // we will look at how to do this in future sessions.
             Fire();
         }
+
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate (0, 0, m_playerRotationSpeed * Time.fixedDeltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Rotate (0, 0, -m_playerRotationSpeed * Time.fixedDeltaTime);
+        }
     }
 
     void Fire()
     {
         GameObject projectileToSpawn = Instantiate(m_projectilePrefab, m_firePoint.position, Quaternion.identity);
+
+        if (projectileToSpawn.GetComponent<Rigidbody2D>())
+        {
+            projectileToSpawn.GetComponent<Rigidbody2D>().linearVelocity = m_playerDirection * m_projectileSpeed;
+        }
     }
 }

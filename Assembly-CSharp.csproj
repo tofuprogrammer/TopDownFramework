@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/TopDownCharacterController.cs" />
     <Compile Include="Assets/Scripts/SwitchSprite.cs" />
+    <Compile Include="Assets/Scripts/CameraFollowsPlayer.cs" />
     <Reference Include="UnityEngine">
       <HintPath>/Applications/Unity/Hub/Editor/6000.0.19f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
