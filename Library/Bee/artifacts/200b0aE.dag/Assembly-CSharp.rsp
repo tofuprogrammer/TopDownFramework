@@ -435,11 +435,8 @@
 -analyzer:"/Applications/Unity/Hub/Editor/6000.0.19f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/6000.0.19f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/6000.0.19f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
-"Assets/Scripts/DestroyProjectiles.cs"
-"Assets/Scripts/MovingObstacle.cs"
-"Assets/Scripts/ProjectileSystem.cs"
+"Assets/Scripts/SwitchSprite.cs"
 "Assets/Scripts/TopDownCharacterController.cs"
-"Assets/Scripts/VFXManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+
