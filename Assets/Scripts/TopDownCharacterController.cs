@@ -9,14 +9,15 @@ using UnityEngine.InputSystem;
 public class TopDownCharacterController : MonoBehaviour
 {
     #region Framework Variables
-    
-    [Header("Movement parameters")]
-    // Reference for the projectile object.
+    [Header("Projectile parameters")]
+    // Reference to the projectile object.
     [SerializeField] GameObject m_projectilePrefab;
     // The point at which the projectile spawns.
     [SerializeField] private Transform m_firePoint;
     // The speed of the projectile.
-    [SerializeField] float m_projectileSpeed;
+    [SerializeField] private float m_projectileSpeed;
+    
+    [Header("Movement parameters")]
     // The inputs that we need to retrieve from the input system.
     private InputAction m_moveAction;
     private InputAction m_attackAction;
@@ -35,6 +36,7 @@ public class TopDownCharacterController : MonoBehaviour
     
     // The speed at which the player rotates.
     [SerializeField] private float m_playerRotationSpeed = 10f;
+    
     #endregion
 
     /// <summary>
@@ -104,7 +106,7 @@ public class TopDownCharacterController : MonoBehaviour
         // Spawns projectile.
         if (projectileToSpawn.GetComponent<Rigidbody2D>())
         {
-            projectileToSpawn.GetComponent<Rigidbody2D>().linearVelocity = m_playerDirection * m_projectileSpeed;
+            projectileToSpawn.GetComponent<Rigidbody2D>().AddForce(m_playerDirection.normalized * this.m_projectileSpeed, ForceMode2D.Impulse);
         }
     }
 }
