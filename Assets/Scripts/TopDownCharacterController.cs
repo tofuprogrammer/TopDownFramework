@@ -109,19 +109,18 @@ public class TopDownCharacterController : MonoBehaviour
 
     void Fire()
     {
-        Vector2 fireDirection = m_lastDirection;
+        Vector2 fireDirection = transform.up;
 
         if (fireDirection == Vector2.zero)
         {
             fireDirection = Vector2.up;
         }
         
-        GameObject projectileToSpawn = Instantiate(m_projectilePrefab, m_firePoint.position, Quaternion.identity);
-
+        Rigidbody2D projectileRigidbody = Instantiate(m_projectilePrefab, m_firePoint.position, transform.rotation).GetComponent<Rigidbody2D>();
         // Spawns projectile.
-        if (projectileToSpawn.GetComponent<Rigidbody2D>())
+        if (projectileRigidbody)
         {
-            projectileToSpawn.GetComponent<Rigidbody2D>().AddForce(fireDirection * m_projectileSpeed, ForceMode2D.Impulse);
+            projectileRigidbody.AddForce(fireDirection * m_projectileSpeed, ForceMode2D.Impulse);
         }
     }
 }
