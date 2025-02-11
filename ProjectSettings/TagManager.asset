@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - MovingObstacleWaypoint
-  - PlayerProjectile
+  - Projectile
   - Enemy
   layers:
   - Default
