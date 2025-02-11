@@ -7,6 +7,9 @@ TagManager:
   - MovingObstacleWaypoint
   - Projectile
   - Enemy
+  - Border
+  - Fire Point
+  - Background
   layers:
   - Default
   - TransparentFX
