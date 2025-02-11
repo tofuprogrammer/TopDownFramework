@@ -16,6 +16,8 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private Transform m_firePoint;
     // The speed of the projectile.
     [SerializeField] private float m_projectileSpeed;
+    // The last known direction of the player.
+    private Vector2 m_lastDirection;
     
     [Header("Movement parameters")]
     // The inputs that we need to retrieve from the input system.
@@ -81,6 +83,12 @@ public class TopDownCharacterController : MonoBehaviour
         // Store any movement inputs into m_playerDirection - this will be used in FixedUpdate to move the player.
         m_playerDirection = m_moveAction.ReadValue<Vector2>();
 
+        if (m_playerDirection.magnitude > 0)
+        {
+            // Stores last known direction for later.
+            m_lastDirection = m_playerDirection;
+        }
+
         // Check if an attack has been triggered.
         if (m_attackAction.IsPressed())
         {
@@ -101,12 +109,19 @@ public class TopDownCharacterController : MonoBehaviour
 
     void Fire()
     {
+        Vector2 fireDirection = m_lastDirection;
+
+        if (fireDirection == Vector2.zero)
+        {
+            fireDirection = Vector2.up;
+        }
+        
         GameObject projectileToSpawn = Instantiate(m_projectilePrefab, m_firePoint.position, Quaternion.identity);
 
         // Spawns projectile.
         if (projectileToSpawn.GetComponent<Rigidbody2D>())
         {
-            projectileToSpawn.GetComponent<Rigidbody2D>().AddForce(m_playerDirection.normalized * this.m_projectileSpeed, ForceMode2D.Impulse);
+            projectileToSpawn.GetComponent<Rigidbody2D>().AddForce(fireDirection * m_projectileSpeed, ForceMode2D.Impulse);
         }
     }
 }

@@ -143,7 +143,7 @@ Transform:
   m_GameObject: {fileID: 107554418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2460,8 +2460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_projectilePrefab: {fileID: 7909002203310539592, guid: c3cbb1e73d86d436c83d572ef8ccd6bb, type: 3}
-  m_firePoint: {fileID: 1618778962}
-  m_projectileSpeed: 0
+  m_firePoint: {fileID: 107554419}
+  m_projectileSpeed: 5
   m_playerSpeed: 200
   m_playerMaxSpeed: 1000
   m_playerRotationSpeed: 10
