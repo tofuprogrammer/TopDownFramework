@@ -9,14 +9,20 @@ using UnityEngine.InputSystem;
 public class TopDownCharacterController : MonoBehaviour
 {
     #region Framework Variables
-    
-    [Header("Movement parameters")]
-    // Reference for the projectile object.
+    [Header("Projectile parameters")]
+    // Reference to the projectile object.
     [SerializeField] GameObject m_projectilePrefab;
     // The point at which the projectile spawns.
     [SerializeField] private Transform m_firePoint;
     // The speed of the projectile.
-    [SerializeField] float m_projectileSpeed;
+    [SerializeField] private float m_projectileSpeed;
+    // How often the projectile can be fired.
+    [SerializeField] private float m_fireRate;
+    private float m_fireTimeout;
+    // The last known direction of the player.
+    private Vector2 m_lastDirection;
+    
+    [Header("Movement parameters")]
     // The inputs that we need to retrieve from the input system.
     private InputAction m_moveAction;
     private InputAction m_attackAction;
@@ -35,6 +41,7 @@ public class TopDownCharacterController : MonoBehaviour
     
     // The speed at which the player rotates.
     [SerializeField] private float m_playerRotationSpeed = 10f;
+    
     #endregion
 
     /// <summary>
@@ -79,9 +86,16 @@ public class TopDownCharacterController : MonoBehaviour
         // Store any movement inputs into m_playerDirection - this will be used in FixedUpdate to move the player.
         m_playerDirection = m_moveAction.ReadValue<Vector2>();
 
-        // Check if an attack has been triggered.
-        if (m_attackAction.IsPressed())
+        if (m_playerDirection.magnitude > 0)
         {
+            // Stores last known direction for later.
+            m_lastDirection = m_playerDirection;
+        }
+
+        // Check if an attack has been triggered.
+        if (m_attackAction.IsPressed() && Time.time > m_fireTimeout)
+        {
+            m_fireTimeout = Time.time + m_fireRate;
             Fire();
         }
 
@@ -97,14 +111,20 @@ public class TopDownCharacterController : MonoBehaviour
         }
     }
 
-    void Fire()
+    private void Fire()
     {
-        GameObject projectileToSpawn = Instantiate(m_projectilePrefab, m_firePoint.position, Quaternion.identity);
+        Vector2 fireDirection = transform.up;
 
-        // Spawns projectile.
-        if (projectileToSpawn.GetComponent<Rigidbody2D>())
+        if (fireDirection == Vector2.zero)
         {
-            projectileToSpawn.GetComponent<Rigidbody2D>().linearVelocity = m_playerDirection * m_projectileSpeed;
+            fireDirection = Vector2.up;
+        }
+        
+        Rigidbody2D projectileRigidbody = Instantiate(m_projectilePrefab, m_firePoint.position, transform.rotation).GetComponent<Rigidbody2D>();
+        // Spawns projectile.
+        if (projectileRigidbody)
+        {
+            projectileRigidbody.AddForce(fireDirection * m_projectileSpeed, ForceMode2D.Impulse);
         }
     }
 }
