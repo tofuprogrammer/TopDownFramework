@@ -71,3 +71,19 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Ignore the Library folder
+/Library/
+
+# Ignore the Temp folder
+/Temp/
+
+# Ignore the Build folder
+/Build/
+
+# Ignore the .vs folder (Visual Studio config files)
+.vs/
+
+# Ignore user-specific files
+.idea/
+*.userprefs
