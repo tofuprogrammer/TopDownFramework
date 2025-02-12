@@ -152,10 +152,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 93579428d2a7a42129ac36959a503b1b
-      internalID: 1908322395
+      spriteID: f533af32b31e49710800000000000000
+      internalID: 1699230603548439391
       vertices: []
       indices: 
       edges: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f732c8fd7af7742b591f17395d01d628
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +173,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Asteroid H_0: 1908322395
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

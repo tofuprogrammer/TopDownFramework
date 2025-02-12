@@ -143,19 +143,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 21
         width: 64
-        height: 64
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 27c47c8e23b2145aeb8963a7ef99d0c6
-      internalID: -1793599472
+      spriteID: 89ee9bc06604f65e0800000000000000
+      internalID: -1914240509564817768
       vertices: []
       indices: 
       edges: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f004a857d0d804f29ac060e376d461d6
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +173,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Asteroid B_0: -1793599472
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
