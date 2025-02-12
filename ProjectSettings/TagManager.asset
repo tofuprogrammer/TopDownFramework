@@ -10,6 +10,7 @@ TagManager:
   - Border
   - Fire Point
   - Background
+  - Asteroid
   layers:
   - Default
   - TransparentFX
