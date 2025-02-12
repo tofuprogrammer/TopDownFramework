@@ -142,20 +142,20 @@ TextureImporter:
       name: Asteroid E_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 7
-        width: 56
-        height: 57
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4d3c82011635c4970800000000000000
-      internalID: 8740452653167330260
+      spriteID: 475afa9b097f94fb780c6828012c9d18
+      internalID: -374371945
       vertices: []
       indices: 
       edges: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 71f507863377041bfa5573bd254941cf
     internalID: 0
     vertices: []
     indices: 
@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Asteroid E_0: -374371945
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
