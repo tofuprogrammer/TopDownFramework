@@ -124,7 +124,10 @@ public class TopDownCharacterController : MonoBehaviour
         // Spawns projectile.
         if (projectileRigidbody)
         {
-            projectileRigidbody.AddForce(fireDirection * m_projectileSpeed, ForceMode2D.Impulse);
+            // Gets the player's current velocity.
+            Vector2 playerVelocity = m_rigidbody.linearVelocity;
+            // Adds the player's velocity to the projectile's initial velocity.
+            projectileRigidbody.linearVelocity = (fireDirection * m_projectileSpeed) + playerVelocity;
         }
     }
 }
