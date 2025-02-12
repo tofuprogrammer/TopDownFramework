@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1294
     height: 1035
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -971,7 +971,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: f2faffff
+      m_ExpandedIDs: 82faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1135,7 +1135,6 @@ MonoBehaviour:
   m_ViewTransforms:
     m_KeySerializationHelper:
     - {fileID: 6195880000653672743, guid: e3b0c7dd596264237a7d8e0f83c025cf, type: 2}
-    - {fileID: -5232636466894144104, guid: 179909888b9dfbe4aade251d81fec2be, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.8963386
       e01: 0
@@ -1145,22 +1144,6 @@ MonoBehaviour:
       e11: 0.8963386
       e12: 0
       e13: 182.74876
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 1
-      e01: 0
-      e02: 0
-      e03: -13
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 112.5
       e20: 0
       e21: 0
       e22: 1
@@ -1232,7 +1215,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Prefabs/Asteroids
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1242,16 +1225,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Prefabs/Asteroids
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/sam/UnityProjects/TopDownFramework
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 2ecc0000
-    m_LastClickedID: 52270
-    m_ExpandedIDs: 0000000042ca0000
+    m_SelectedIDs: f6af0000
+    m_LastClickedID: 45046
+    m_ExpandedIDs: 000000004ead0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1280,7 +1263,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000042ca0000
+    m_ExpandedIDs: 000000004ead0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1359,9 +1342,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 8
+    x: 217
     y: 690
-    width: 1311
+    width: 990.5
     height: 373
   m_SerializedDataModeController:
     m_DataMode: 0
