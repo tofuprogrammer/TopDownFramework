@@ -16,6 +16,9 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private Transform m_firePoint;
     // The speed of the projectile.
     [SerializeField] private float m_projectileSpeed;
+    // How often the projectile can be fired.
+    [SerializeField] private float m_fireRate;
+    private float m_fireTimeout;
     // The last known direction of the player.
     private Vector2 m_lastDirection;
     
@@ -90,8 +93,9 @@ public class TopDownCharacterController : MonoBehaviour
         }
 
         // Check if an attack has been triggered.
-        if (m_attackAction.IsPressed())
+        if (m_attackAction.IsPressed() && Time.time > m_fireTimeout)
         {
+            m_fireTimeout = Time.time + m_fireRate;
             Fire();
         }
 
@@ -107,7 +111,7 @@ public class TopDownCharacterController : MonoBehaviour
         }
     }
 
-    void Fire()
+    private void Fire()
     {
         Vector2 fireDirection = transform.up;
 
