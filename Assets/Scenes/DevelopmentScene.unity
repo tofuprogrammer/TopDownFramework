@@ -2462,7 +2462,7 @@ MonoBehaviour:
   m_projectilePrefab: {fileID: 7909002203310539592, guid: c3cbb1e73d86d436c83d572ef8ccd6bb, type: 3}
   m_firePoint: {fileID: 107554419}
   m_projectileSpeed: 3
-  m_fireRate: 0.1
+  m_fireRate: 0.2
   m_playerSpeed: 200
   m_playerMaxSpeed: 1000
   m_playerRotationSpeed: 10
