@@ -5,8 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - MovingObstacleWaypoint
-  - PlayerProjectile
+  - Projectile
   - Enemy
+  - Border
+  - Fire Point
+  - Background
   layers:
   - Default
   - TransparentFX
