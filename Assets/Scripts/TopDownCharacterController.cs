@@ -41,6 +41,8 @@ public class TopDownCharacterController : MonoBehaviour
     
     // The speed at which the player rotates.
     [SerializeField] private float m_playerRotationSpeed = 10f;
+    // The damping applied to the player when they stop moving;
+    [SerializeField] private float m_playerDampingFactor = 1.0f;
     
     #endregion
 
@@ -72,7 +74,12 @@ public class TopDownCharacterController : MonoBehaviour
         // Applies a force to make the player move in the direction they are facing if W or the up arrow is pressed.
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
+            m_rigidbody.linearDamping = 0f;
             m_rigidbody.AddForce(transform.up * (Time.deltaTime * speed * Input.GetAxis("Vertical")));
+        }
+        else
+        {
+            m_rigidbody.linearDamping = m_playerDampingFactor;
         }
     }
     
@@ -128,6 +135,13 @@ public class TopDownCharacterController : MonoBehaviour
             Vector2 playerVelocity = m_rigidbody.linearVelocity;
             // Adds the player's velocity to the projectile's initial velocity.
             projectileRigidbody.linearVelocity = (fireDirection * m_projectileSpeed) + playerVelocity;
+        }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Border"))
+        {
+            Debug.Log("Player hit the border!");
         }
     }
 }
