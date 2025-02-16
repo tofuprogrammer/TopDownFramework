@@ -15,6 +15,7 @@ public class Asteroids : MonoBehaviour
     private GameObject Asteroid;
     private Vector2 asteroidDirection;
     private float asteroidSpeed;
+    [SerializeField] float m_asteroidLifetime = 15.0f;
     #endregion
     
     [Header("Player")]
@@ -24,19 +25,25 @@ public class Asteroids : MonoBehaviour
     {
         Invoke(nameof(SpawnAsteroids), Random.Range(m_minTimeBetweenSpawns, m_maxTimeBetweenSpawns));
     }
+
     private void SpawnAsteroids()
     {
         numberOfAsteroids = Random.Range(3, 6);
         for (int i = 0; i < numberOfAsteroids; i++)
         {
             asteroidToSpawn = Random.Range(0, asteroidPrefabs.Length);
-            Vector2 spawnPosition = (Vector2) playerTransform.position + Random.insideUnitCircle.normalized * m_spawnDistance;
+            Vector2 spawnPosition = (Vector2)playerTransform.position + Random.insideUnitCircle.normalized * m_spawnDistance;
             Asteroid = Instantiate(asteroidPrefabs[asteroidToSpawn], spawnPosition, Quaternion.identity);
             Rigidbody2D asteroidRigidbody = Asteroid.GetComponent<Rigidbody2D>();
             asteroidDirection = (playerTransform.position - Asteroid.transform.position).normalized;
             asteroidSpeed = Random.Range(m_minAsteroidSpeed, m_maxAsteroidSpeed);
             asteroidRigidbody.linearVelocity = asteroidDirection * asteroidSpeed;
+
+            // Destroy the asteroid itself after the set lifetime
+            Destroy(Asteroid, m_asteroidLifetime);
         }
+
+        // Recursively call SpawnAsteroids
         Invoke(nameof(SpawnAsteroids), Random.Range(m_minTimeBetweenSpawns, m_maxTimeBetweenSpawns));
     }
 }

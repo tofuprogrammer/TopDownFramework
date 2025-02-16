@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2620558531639658638}
   - component: {fileID: 1038399887107801359}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Asteroids
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,6 +54,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefabs:
   - {fileID: 0}
+  m_minTimeBetweenSpawns: 2
+  m_maxTimeBetweenSpawns: 5
+  m_spawnDistance: 10
+  m_minAsteroidSpeed: 1
+  m_maxAsteroidSpeed: 10
+  playerTransform: {fileID: 0}
 --- !u!1001 &124077821275981057
 PrefabInstance:
   m_ObjectHideFlags: 0
