@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class Asteroids : MonoBehaviour
@@ -8,31 +7,36 @@ public class Asteroids : MonoBehaviour
     [SerializeField] private GameObject[] asteroidPrefabs;
     private int asteroidToSpawn;
     private int numberOfAsteroids;
+    [SerializeField] float m_minTimeBetweenSpawns = 2.0f;
+    [SerializeField] float m_maxTimeBetweenSpawns = 5.0f;
+    [SerializeField] float m_spawnDistance = 10.0f;
+    [SerializeField] float m_minAsteroidSpeed = 1.0f;
+    [SerializeField] float m_maxAsteroidSpeed = 3.0f;
+    private GameObject Asteroid;
+    private Vector2 asteroidDirection;
+    private float asteroidSpeed;
     #endregion
+    
+    [Header("Player")]
+    [SerializeField] private Transform playerTransform;
 
     void Start()
     {
-        Invoke(nameof(SpawnAsteroid), Random.Range(2.0f, 5.0f));
+        Invoke(nameof(SpawnAsteroids), Random.Range(m_minTimeBetweenSpawns, m_maxTimeBetweenSpawns));
     }
-    
-    void Update()
-    {
-        
-        
-    }
-    
-    void SpawnAsteroid()
+    private void SpawnAsteroids()
     {
         numberOfAsteroids = Random.Range(3, 6);
         for (int i = 0; i < numberOfAsteroids; i++)
         {
-            asteroidToSpawn = Random.Range(1, asteroidPrefabs.Length + 1);
-            
-            if (asteroidToSpawn > 0 && asteroidToSpawn <= asteroidPrefabs.Length)
-            {
-                Instantiate(asteroidPrefabs[asteroidToSpawn - 1], transform.position, Quaternion.identity);
-            }
+            asteroidToSpawn = Random.Range(0, asteroidPrefabs.Length);
+            Vector2 spawnPosition = (Vector2) playerTransform.position + Random.insideUnitCircle.normalized * m_spawnDistance;
+            Asteroid = Instantiate(asteroidPrefabs[asteroidToSpawn], spawnPosition, Quaternion.identity);
+            Rigidbody2D asteroidRigidbody = Asteroid.GetComponent<Rigidbody2D>();
+            asteroidDirection = (playerTransform.position - Asteroid.transform.position).normalized;
+            asteroidSpeed = Random.Range(m_minAsteroidSpeed, m_maxAsteroidSpeed);
+            asteroidRigidbody.linearVelocity = asteroidDirection * asteroidSpeed;
         }
-        Invoke(nameof(SpawnAsteroid), Random.Range(2.0f, 5.0f));
+        Invoke(nameof(SpawnAsteroids), Random.Range(m_minTimeBetweenSpawns, m_maxTimeBetweenSpawns));
     }
 }

@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1583229976548821854}
   - component: {fileID: 9045085137532213787}
+  - component: {fileID: 2876707182315826814}
+  - component: {fileID: 8074308568814025876}
   m_Layer: 0
   m_Name: Asteroid B
-  m_TagString: Untagged
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,3 +89,99 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &2876707182315826814
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3397379092446321570}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &8074308568814025876
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3397379092446321570}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.32, y: 0.04658524}
+      - {x: 0.32184282, y: 0.26894316}
+      - {x: 0.27739927, y: 0.26443318}
+      - {x: 0.16524158, y: 0.20793758}
+      - {x: 0.11430249, y: 0.20759076}
+      - {x: 0.08327792, y: 0.22756857}
+      - {x: -0.0070339823, y: 0.22623628}
+      - {x: -0.07810822, y: 0.17412491}
+      - {x: -0.113983646, y: 0.17006868}
+      - {x: -0.1931816, y: 0.25639373}
+      - {x: -0.25184277, y: 0.26157194}
+      - {x: -0.31815723, y: 0.23341477}
+      - {x: -0.32, y: 0.10579925}
+      - {x: -0.1763954, y: 0.01618332}
+      - {x: -0.1579129, y: -0.068401486}
+      - {x: -0.110026546, y: -0.10894318}
+      - {x: -0.033287972, y: -0.09979989}
+      - {x: 0.028670982, y: -0.06959899}
+      - {x: 0.09387597, y: -0.068671286}
+      - {x: 0.16184281, y: -0.07525756}
+      - {x: 0.25975567, y: 0.0037121624}
+      - {x: 0.2810568, y: 0.022384495}
+  m_UseDelaunayMesh: 0
