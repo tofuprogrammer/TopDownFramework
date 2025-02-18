@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -54,15 +53,22 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private float m_playerRotationSpeed = 10f;
 
     // The damping applied to the player when they stop moving;
-    [SerializeField] private float m_playerDampingFactor = 1.0f; 
+    [SerializeField] private float m_playerDampingFactor = 1.0f;
     
+    [Header("Level parameters")]
+    
+    [SerializeField] private float m_levelTime = 120.0f;
     #endregion
 
+    // Decides end screen based on win or loss
     public static bool s_gameWon;
+    // References the scoring system
     public ScoreSystem m_scoreSystem;
-    [SerializeField] private float m_levelTime = 120.0f;
+    // Stores the timer
     public float m_playerTimer;
+    // Checks if the timer is active
     private bool m_isTimerActive;
+    // Stores the start time on the timer
     private float m_timerStart;
     /// <summary>
     /// When the script first initialises this gets called.
@@ -72,6 +78,7 @@ public class TopDownCharacterController : MonoBehaviour
     private void Start()
     {
         StartPlayerTimer();
+        // Checks if the score system reference is null
         if (!m_scoreSystem)
         {
             m_scoreSystem = FindFirstObjectByType<ScoreSystem>();
@@ -120,7 +127,6 @@ public class TopDownCharacterController : MonoBehaviour
         if (m_isTimerActive)
         {
             m_playerTimer = Time.time - m_timerStart;
-            Debug.Log("Timer: " + m_playerTimer);
 
             if (m_playerTimer >= m_levelTime)
             {
