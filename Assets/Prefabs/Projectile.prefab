@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3835506930118914519}
   - component: {fileID: 3908570864667778770}
   - component: {fileID: 5297330177054405268}
-  - component: {fileID: -6420665074783993658}
+  - component: {fileID: -1504953849992314802}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -163,7 +163,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.03, y: 0.03}
   m_EdgeRadius: 0
---- !u!114 &-6420665074783993658
+--- !u!114 &-1504953849992314802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,3 +175,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54918f9bbe4b4419ae3d424511abeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ship: {fileID: 0}

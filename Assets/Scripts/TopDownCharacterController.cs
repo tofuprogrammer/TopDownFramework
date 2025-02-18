@@ -52,10 +52,12 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private float m_playerRotationSpeed = 10f;
 
     // The damping applied to the player when they stop moving;
-    [SerializeField] private float m_playerDampingFactor = 1.0f;
-
+    [SerializeField] private float m_playerDampingFactor = 1.0f; 
+    
     #endregion
 
+    public static int playerScore = 0;
+    
     /// <summary>
     /// When the script first initialises this gets called.
     /// Use this for grabbing components and setting up input bindings.
@@ -137,8 +139,7 @@ public class TopDownCharacterController : MonoBehaviour
             fireDirection = Vector2.up;
         }
 
-        Rigidbody2D projectileRigidbody = Instantiate(m_projectilePrefab, m_firePoint.position, transform.rotation)
-            .GetComponent<Rigidbody2D>();
+        Rigidbody2D projectileRigidbody = Instantiate(m_projectilePrefab, m_firePoint.position, transform.rotation).GetComponent<Rigidbody2D>();
         // Spawns projectile.
         if (projectileRigidbody)
         {
@@ -146,6 +147,14 @@ public class TopDownCharacterController : MonoBehaviour
             Vector2 playerVelocity = m_rigidbody.linearVelocity;
             // Adds the player's velocity to the projectile's initial velocity.
             projectileRigidbody.linearVelocity = (fireDirection * m_projectileSpeed) + playerVelocity;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            Destroy(gameObject);
         }
     }
 }
