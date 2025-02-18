@@ -232,6 +232,7 @@ MonoBehaviour:
   m_playerMaxSpeed: 180
   m_playerRotationSpeed: 15
   m_playerDampingFactor: 1.7
+  m_scoreSystem: {fileID: 0}
 --- !u!212 &451103365
 SpriteRenderer:
   m_ObjectHideFlags: 0

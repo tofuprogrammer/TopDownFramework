@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// A class to control the top-down character.
@@ -55,11 +56,21 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private float m_playerDampingFactor = 1.0f; 
     
     #endregion
+    
+    public ScoreSystem m_scoreSystem;
 
     /// <summary>
     /// When the script first initialises this gets called.
     /// Use this for grabbing components and setting up input bindings.
     /// </summary>
+
+    void Start()
+    {
+        if (!m_scoreSystem)
+        {
+            m_scoreSystem = FindFirstObjectByType<ScoreSystem>();
+        }
+    }
     
     private void Awake()
     {
@@ -153,6 +164,8 @@ public class TopDownCharacterController : MonoBehaviour
         if (collision.gameObject.CompareTag("Asteroid"))
         {
             Destroy(gameObject);
+            m_scoreSystem.SaveScore();
+            SceneManager.LoadScene("EndScene");
         }
     }
 }

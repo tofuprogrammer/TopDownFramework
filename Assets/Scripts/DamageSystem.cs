@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DamageSystem : MonoBehaviour
 {
-    private ScoreSystem m_scoreSystem;
+    public ScoreSystem m_scoreSystem;
 
     void Start()
     {

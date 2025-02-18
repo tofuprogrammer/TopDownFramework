@@ -51,6 +51,7 @@
     <Compile Include="Assets/Scripts/ScoreSystem.cs" />
     <Compile Include="Assets/Scripts/TopDownCharacterController.cs" />
     <Compile Include="Assets/Scripts/ScoreUI.cs" />
+    <Compile Include="Assets/Scripts/EndManager.cs" />
     <Compile Include="Assets/Scripts/MenuManager.cs" />
     <Compile Include="Assets/Scripts/SwitchSprite.cs" />
     <Compile Include="Assets/Scripts/CameraFollowsPlayer.cs" />
