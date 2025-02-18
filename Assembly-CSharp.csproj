@@ -47,10 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/Asteroids.cs" />
+    <Compile Include="Assets/Scripts/GameUI.cs" />
     <Compile Include="Assets/Scripts/DamageSystem.cs" />
     <Compile Include="Assets/Scripts/ScoreSystem.cs" />
     <Compile Include="Assets/Scripts/TopDownCharacterController.cs" />
-    <Compile Include="Assets/Scripts/ScoreUI.cs" />
     <Compile Include="Assets/Scripts/EndManager.cs" />
     <Compile Include="Assets/Scripts/MenuManager.cs" />
     <Compile Include="Assets/Scripts/SwitchSprite.cs" />

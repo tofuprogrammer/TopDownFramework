@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -59,14 +60,18 @@ public class TopDownCharacterController : MonoBehaviour
 
     public static bool s_gameWon;
     public ScoreSystem m_scoreSystem;
-
+    [SerializeField] private float m_levelTime = 120.0f;
+    public float m_playerTimer;
+    private bool m_isTimerActive;
+    private float m_timerStart;
     /// <summary>
     /// When the script first initialises this gets called.
     /// Use this for grabbing components and setting up input bindings.
     /// </summary>
 
-    void Start()
+    private void Start()
     {
+        StartPlayerTimer();
         if (!m_scoreSystem)
         {
             m_scoreSystem = FindFirstObjectByType<ScoreSystem>();
@@ -110,8 +115,22 @@ public class TopDownCharacterController : MonoBehaviour
     /// Therefore, this will run more or less frequently depending on performance.
     /// Used to catch changes in variables or input.
     /// </summary>
-    void Update()
+    private void Update()
     {
+        if (m_isTimerActive)
+        {
+            m_playerTimer = Time.time - m_timerStart;
+            Debug.Log("Timer: " + m_playerTimer);
+
+            if (m_playerTimer >= m_levelTime)
+            {
+                // Stops the timer
+                StopPlayerTimer();
+                
+                // Stops the game
+                LevelTimerEnded();
+            }
+        }
         // Store any movement inputs into m_playerDirection - this will be used in FixedUpdate to move the player.
         m_playerDirection = m_moveAction.ReadValue<Vector2>();
 
@@ -176,5 +195,24 @@ public class TopDownCharacterController : MonoBehaviour
             s_gameWon = false;
             SceneManager.LoadScene("EndScene");
         }
+    }
+
+    private void StartPlayerTimer()
+    {
+        m_timerStart = Time.time;
+        m_isTimerActive = true;
+    }
+
+    private void StopPlayerTimer()
+    {
+        m_isTimerActive = false;
+    }
+
+    private void LevelTimerEnded()
+    {
+        Destroy(gameObject);
+        m_scoreSystem.SaveScore();
+        s_gameWon = true;
+        SceneManager.LoadScene("EndScene");
     }
 }
