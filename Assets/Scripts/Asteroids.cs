@@ -31,16 +31,20 @@ public class Asteroids : MonoBehaviour
         numberOfAsteroids = Random.Range(3, 6);
         for (int i = 0; i < numberOfAsteroids; i++)
         {
-            asteroidToSpawn = Random.Range(0, asteroidPrefabs.Length);
-            Vector2 spawnPosition = (Vector2)playerTransform.position + Random.insideUnitCircle.normalized * m_spawnDistance;
-            Asteroid = Instantiate(asteroidPrefabs[asteroidToSpawn], spawnPosition, Quaternion.identity);
-            Rigidbody2D asteroidRigidbody = Asteroid.GetComponent<Rigidbody2D>();
-            asteroidDirection = (playerTransform.position - Asteroid.transform.position).normalized;
-            asteroidSpeed = Random.Range(m_minAsteroidSpeed, m_maxAsteroidSpeed);
-            asteroidRigidbody.linearVelocity = asteroidDirection * asteroidSpeed;
+            if (playerTransform)
+            {
+                asteroidToSpawn = Random.Range(0, asteroidPrefabs.Length);
+                Vector2 spawnPosition = (Vector2)playerTransform.position +
+                                        Random.insideUnitCircle.normalized * m_spawnDistance;
+                Asteroid = Instantiate(asteroidPrefabs[asteroidToSpawn], spawnPosition, Quaternion.identity);
+                Rigidbody2D asteroidRigidbody = Asteroid.GetComponent<Rigidbody2D>();
+                asteroidDirection = (playerTransform.position - Asteroid.transform.position).normalized;
+                asteroidSpeed = Random.Range(m_minAsteroidSpeed, m_maxAsteroidSpeed);
+                asteroidRigidbody.linearVelocity = asteroidDirection * asteroidSpeed;
 
-            // Destroy the asteroid itself after the set lifetime
-            Destroy(Asteroid, m_asteroidLifetime);
+                // Destroy the asteroid itself after the set lifetime
+                Destroy(Asteroid, m_asteroidLifetime);
+            }
         }
 
         // Recursively call SpawnAsteroids

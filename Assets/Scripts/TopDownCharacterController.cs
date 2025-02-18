@@ -56,13 +56,11 @@ public class TopDownCharacterController : MonoBehaviour
     
     #endregion
 
-    public static int playerScore = 0;
-    
     /// <summary>
     /// When the script first initialises this gets called.
     /// Use this for grabbing components and setting up input bindings.
     /// </summary>
-
+    
     private void Awake()
     {
         // Bind movement inputs to variables.
