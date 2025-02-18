@@ -9,14 +9,14 @@ public class MenuManager : MonoBehaviour
     // Controls visibility of controls panel
     private bool m_controlsPanelActive;
 
-    public void LoadLevel()
+    private void LoadLevel()
     {
         // Loads level and UI
         SceneManager.LoadScene("GameScene");
         SceneManager.LoadScene("UIScene", LoadSceneMode.Additive);
     }
     
-    public void ToggleControlsPanel()
+    private void ToggleControlsPanel()
     {
         if (m_controlsPanelActive)
         {
@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
     }
 
     // Quits the game
-    public void QuitGame()
+    private void QuitGame()
     {
         Application.Quit();
     }
