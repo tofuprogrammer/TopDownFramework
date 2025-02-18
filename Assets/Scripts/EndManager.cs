@@ -2,10 +2,20 @@ using UnityEngine;
 
 public class EndManager : MonoBehaviour
 {
-    public TMPro.TextMeshProUGUI m_FinalScore;
+    public TMPro.TextMeshProUGUI m_endText;
+    
+    public TMPro.TextMeshProUGUI m_finalScore;
 
     void Start()
     {
-        m_FinalScore.text = "Final score: " + ScoreSystem.m_finalScore;
+        if (TopDownCharacterController.gameWon)
+        {
+            m_endText.text = "You survived!";
+        }
+        else
+        {
+            m_endText.text = "You died!";
+        }
+        m_finalScore.text = "Final score: " + ScoreSystem.m_finalScore;
     }
 }

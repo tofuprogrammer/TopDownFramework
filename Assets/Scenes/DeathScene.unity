@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 443623039}
   - component: {fileID: 443623038}
   m_Layer: 5
-  m_Name: DeadText
+  m_Name: EndText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 642551305}
   - component: {fileID: 642551304}
   m_Layer: 5
-  m_Name: DeadPanel
+  m_Name: EndPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,7 +524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22388675324b1431a9c5b81abd0d072d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FinalScore: {fileID: 1559177702}
+  m_endText: {fileID: 443623038}
+  m_finalScore: {fileID: 1559177702}
 --- !u!4 &907989626
 Transform:
   m_ObjectHideFlags: 0

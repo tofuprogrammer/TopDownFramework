@@ -56,7 +56,7 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private float m_playerDampingFactor = 1.0f; 
     
     #endregion
-    
+    public static bool gameWon;
     public ScoreSystem m_scoreSystem;
 
     /// <summary>
@@ -165,6 +165,7 @@ public class TopDownCharacterController : MonoBehaviour
         {
             Destroy(gameObject);
             m_scoreSystem.SaveScore();
+            gameWon = false;
             SceneManager.LoadScene("EndScene");
         }
     }
