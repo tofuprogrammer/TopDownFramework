@@ -1,9 +1,9 @@
 using UnityEngine;
 
 public class SwitchSprite : MonoBehaviour
-
 {
-    private static readonly int IsBoosting = Animator.StringToHash("isBoosting");
+    // Checks 
+    private static readonly int s_IsBoosting = Animator.StringToHash("isBoosting");
     private Animator m_animator;
 
     void Start()
@@ -16,11 +16,11 @@ public class SwitchSprite : MonoBehaviour
         // Switches sprite depending on keys being pressed.
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            m_animator.SetBool(IsBoosting, true);
+            m_animator.SetBool(s_IsBoosting, true);
         }
         else
         {
-            m_animator.SetBool(IsBoosting, false);
+            m_animator.SetBool(s_IsBoosting, false);
         }
     }
 }

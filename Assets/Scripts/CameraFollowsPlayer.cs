@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class CameraFollowsPlayer : MonoBehaviour
 {
-    public Transform player;
-    // LateUpdate is called immediately after Update() completes.
+    // Player location
+    [SerializeField] private Transform m_playerTransform;
+    
     void LateUpdate()
     {
-        if (player)
+        // Checks if the player's location is valid
+        if (m_playerTransform)
         {
-            transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+            // Moves the camera to the location of the player
+            transform.position = new Vector3(m_playerTransform.position.x, m_playerTransform.position.y, transform.position.z);
         }
     }
 }

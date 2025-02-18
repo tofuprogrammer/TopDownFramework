@@ -56,7 +56,8 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private float m_playerDampingFactor = 1.0f; 
     
     #endregion
-    public static bool gameWon;
+
+    public static bool s_gameWon;
     public ScoreSystem m_scoreSystem;
 
     /// <summary>
@@ -139,6 +140,9 @@ public class TopDownCharacterController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fires a projectile to destroy asteroids
+    /// </summary>
     private void Fire()
     {
         Vector2 fireDirection = transform.up;
@@ -159,13 +163,17 @@ public class TopDownCharacterController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Trigger when a collision is detected between the ship and another object
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
             Destroy(gameObject);
             m_scoreSystem.SaveScore();
-            gameWon = false;
+            s_gameWon = false;
             SceneManager.LoadScene("EndScene");
         }
     }

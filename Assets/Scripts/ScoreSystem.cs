@@ -2,16 +2,19 @@ using UnityEngine;
 
 public class ScoreSystem : MonoBehaviour
 {
+    // Stores player's score and final score
     public int m_score;
-    public static int m_finalScore;
+    public static int s_finalScore;
 
-    public void AddScore(int ScoreIncrease)
+    // Increases player's score when called
+    public void AddScore(int scoreIncrease)
     {
-        m_score += ScoreIncrease;
+        m_score += scoreIncrease;
     }
 
+    // Saves player's score at the end of the session
     public void SaveScore()
     {
-        m_finalScore = m_score;
+        s_finalScore = m_score;
     }
 }

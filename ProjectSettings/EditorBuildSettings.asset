@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/UIScene.unity
     guid: e69106afaf7294774b152400655dd085
   - enabled: 1
-    path: Assets/Scenes/DeathScene.unity
+    path: Assets/Scenes/EndScene.unity
     guid: 73231b6dadfc247a794af005e5858d63
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

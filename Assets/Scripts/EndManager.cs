@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class EndManager : MonoBehaviour
 {
+    // References for text boxes
     public TMPro.TextMeshProUGUI m_endText;
-    
     public TMPro.TextMeshProUGUI m_finalScore;
 
     void Start()
     {
-        if (TopDownCharacterController.gameWon)
+        // Tells the player if they won
+        if (TopDownCharacterController.s_gameWon)
         {
             m_endText.text = "You survived!";
         }
@@ -16,6 +17,8 @@ public class EndManager : MonoBehaviour
         {
             m_endText.text = "You died!";
         }
-        m_finalScore.text = "Final score: " + ScoreSystem.m_finalScore;
+        
+        // Shows final score
+        m_finalScore.text = "Final score: " + ScoreSystem.s_finalScore;
     }
 }
